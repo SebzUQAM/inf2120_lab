@@ -9,9 +9,10 @@ package com.fc691952uqam.inf2120_lab;
  * @author fc691952
  */
 public class Facture {
-    private TaxeDouble[] taxeDoubles = new TaxeDouble[10];
-    private TaxeSimple[] taxeSimples = new TaxeSimple[10];
-    private NonTaxable[] nonTaxables = new NonTaxable[10];
+    private final int TAILLE_MAX = 10;
+    private TaxeDouble[] taxeDoubles = new TaxeDouble[TAILLE_MAX];
+    private TaxeSimple[] taxeSimples = new TaxeSimple[TAILLE_MAX];
+    private NonTaxable[] nonTaxables = new NonTaxable[TAILLE_MAX];
     
     public void ajouterProduitNonTaxable(NonTaxable produit){
         int index = 0;
