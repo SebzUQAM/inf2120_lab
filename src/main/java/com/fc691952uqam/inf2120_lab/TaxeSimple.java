@@ -8,15 +8,13 @@ package com.fc691952uqam.inf2120_lab;
  *
  * @author fc691952
  */
-public class TaxeSimple {
-    private String nomProduit;
-    private double prixProduit;
+public class TaxeSimple extends Produit {
 
     public TaxeSimple(String nomProduit, double prixProduit) {
-        this.nomProduit = nomProduit;
-        this.prixProduit = prixProduit;
+        super(nomProduit,prixProduit);
     }
     
+    @Override
     public double prix(){
         double result = prixProduit*1.05;
         result *= 100;

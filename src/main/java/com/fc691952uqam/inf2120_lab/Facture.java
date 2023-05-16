@@ -9,63 +9,23 @@ package com.fc691952uqam.inf2120_lab;
  * @author fc691952
  */
 public class Facture {
-    private final int TAILLE_MAX = 10;
-    private TaxeDouble[] taxeDoubles = new TaxeDouble[TAILLE_MAX];
-    private TaxeSimple[] taxeSimples = new TaxeSimple[TAILLE_MAX];
-    private NonTaxable[] nonTaxables = new NonTaxable[TAILLE_MAX];
+    private final int TAILLE_MAX = 30;
+    private final Produit[] produits = new Produit[TAILLE_MAX];
     
-    public void ajouterProduitNonTaxable(NonTaxable produit){
-        int index = 0;
-        boolean ajouter = false;
-        while(index < nonTaxables.length && !ajouter){
-            ajouter = nonTaxables[index] == null;
-            if(ajouter){
-                nonTaxables[index] = produit;
-            }
-        }
-        if(!ajouter){
-            throw new ArrayIndexOutOfBoundsException();
-        }
-    }
+    private int nbDeProduit = 0;
     
-    public void ajouterProduitTaxeSimple(TaxeSimple produit){
-        int index = 0;
-        boolean ajouter = false;
-        while(index < taxeSimples.length && !ajouter){
-            ajouter = taxeSimples[index] == null;
-            if(ajouter){
-                taxeSimples[index] = produit;
-            }
-        }
-        if(!ajouter){
-            throw new ArrayIndexOutOfBoundsException();
-        }
-    }
-    
-    public void ajouterProduitTaxeDouble(TaxeDouble produit){
-        int index = 0;
-        boolean ajouter = false;
-        while(index < taxeDoubles.length && !ajouter){
-            ajouter = taxeDoubles[index] == null;
-            if(ajouter){
-                taxeDoubles[index] = produit;
-            }
-        }
-        if(!ajouter){
+    public void ajouterProduit(Produit produit){
+        if(nbDeProduit < TAILLE_MAX){
+            produits[nbDeProduit++] = produit;
+        }else{
             throw new ArrayIndexOutOfBoundsException();
         }
     }
     
     public double prixTotal(){
-        double result = 0;
-        for(NonTaxable val : nonTaxables){
-            result += val.prix();
-        }
-        for(TaxeDouble val : taxeDoubles){
-            result += val.prix();
-        }
-        for(TaxeSimple val : taxeSimples){
-            result += val.prix();
+        int result = 0;
+        for(int i=0; i< nbDeProduit; i++){
+            result += produits[i].prix();
         }
         return result;
     }
